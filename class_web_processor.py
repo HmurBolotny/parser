@@ -10,6 +10,7 @@ class ClientWeb:
         self.url = url
         try:
             self.response = requests.get(self.url, **keyword)
+            print(self.response.content)
             self.connect = True
         except requests.ConnectionError:
             print('error url')
@@ -17,7 +18,7 @@ class ClientWeb:
             Exception('error url')
 
     def __is_error__(self):
-        if self.response == None:
+        if self.response is None:
             return False
         if self.response.status_code == 200:
             return True
